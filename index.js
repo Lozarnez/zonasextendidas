@@ -1,7 +1,7 @@
 const axios = require('axios');
 const qs = require('qs');
 const xl = require('excel4node');
-const codigos = require('./constants');
+const codigos = require('./sepomex_abril-2016');
 
 const wb = new xl.Workbook();
 const ws = wb.addWorksheet('Zonas Extendidas');
@@ -18,8 +18,8 @@ const headingColumnNames = [
 let finalArray = [];
 
 async function getFile() {
-  for(const codigo of codigos.codigospruebas) {
-    await primero(codigo)
+  for(const codigo of codigos.dataJSON) {
+    await primero(codigo.cp)
   }
   //console.log(finalArray)
   createExcel(finalArray)
